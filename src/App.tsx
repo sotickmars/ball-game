@@ -1,26 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import counter from 'store/counter'
+import { observer } from 'mobx-react-lite';
+import { ToDo } from 'components/Todo/Todo';
 
-function App() {
+export const App: React.FC = observer(() => {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        number = {counter.count}
+        <button onClick={() => counter.increment()}>+1</button>
+        <button onClick={() => counter.decrement()}>-1</button>
+      </div>
+      <ToDo />
     </div>
   );
-}
-
-export default App;
+})
